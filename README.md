@@ -1,29 +1,9 @@
-* 使用[xray](https://github.com/XTLS/Xray-core)+caddy同时部署通过ws传输的vmess vless trojan shadowsocks socks等协议，并默认已配置好伪装网站。
-* 支持tor网络，且可通过自定义网络配置文件启动xray和caddy来按需配置各种功能  
-* 支持存储自定义文件,目录及账号密码均为UUID,客户端务必使用TLS连接  
-  **Heroku 为我们提供了免费的容器服务，我们不应该滥用它，所以本项目不宜做为长期翻墙使用。**
-
-## 镜像
 
 本镜像不会因为大量占用资源而被封号。注册好Heroku账号并登录后,点击下面按钮便可部署.
 
 ### 服务端
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/geithome365/xaryproject) 
-
-点击上面紫色`Deploy to Heroku`，会跳转到heroku app创建页面，填上应用的名称、选择节点(建议用欧洲节点，美国节点会自动删除YouTube评论与点赞！)、按需修改部分参数和UUID后点击下面`deploy`开始创建部署应用  
-如出现错误，可以多尝试几次，待部署完成后页面底部会显示`Your app was successfully deployed` 
-  * 点击Manage App可在Settings下的Config Vars项**查看和重新设置参数**  
-  * 点击Open app跳转[欢迎页面](/etc/CADDYIndexPage.md)域名即为heroku分配域名，格式为`xxx.herokuapp.com`，用于客户端  
-  * 默认协议密码为`24b4b1e1-7a89-45f6-858c-242cf53b5bdb`，WS路径为$UUID-[vmess|vless|trojan|ss|socks]格式
-
-### 客户端
-* **务必替换所有的`xxx.herokuapp.com`为heroku分配的项目域名**  
-* **务必替换所有的`24b4b1e1-7a89-45f6-858c-242cf53b5bdb`为部署时设置的UUID,建议更改,不要每个人都一样**  
-
-**XRay 将在部署时会自动实配安装`最新版本`。**
-
-**出于安全考量，除非使用 CDN，否则请不要使用自定义域名，而使用 Heroku 分配的二级域名，以实现 XRay vless Websocket + TLS。**
 
 <details>
 <summary>V2rayN(Xray、V2ray)</summary>
@@ -108,22 +88,3 @@ addEventListener(
 )
 ```
 </details>
-
-## OpenWrt优选IP脚本自动更新：
-
-* [CloudflareST](https://github.com/Lbingyi/CloudflareST) `OpenWrt推荐-速度较快`
-* [cf-autoupdate](https://github.com/Lbingyi/cf-autoupdate) `OpenWrt推荐`
-
-> [更多来自热心网友PR的使用教程](/tutorial)
-
-## 关于CF筛选IP
-
-* 请参考 [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest) `推荐`
-* 请参考 [better-cloudflare-ip](https://github.com/badafans/better-cloudflare-ip)
-
-### 特别感谢 ：
-
-* [mixool](https://github.com/mixool/)
-* [bclswl0827](https://github.com/bclswl0827/v2ray-heroku)
-* [yxhit](https://github.com/yxhit)
-* [badafans](https://github.com/badafans/better-cloudflare-ip/tree/20201208)
